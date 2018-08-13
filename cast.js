@@ -4,7 +4,7 @@ const playerManager = context.getPlayerManager();
 playerManager.setMessageInterceptor(
     cast.framework.messages.MessageType.LOAD, loadRequestData => {
         if (loadRequestData.media && loadRequestData.media.entity) {
-            console.log(loadRequestData.credentials);
+            document.getElementById('auth').innerHTML = loadRequestData.credentials;
             return thirdparty
                 .getMediaById(
                     loadRequestData.media.entity, loadRequestData.credentials)
