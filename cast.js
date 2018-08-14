@@ -5,7 +5,7 @@ playerManager.setMessageInterceptor(
     cast.framework.messages.MessageType.LOAD, loadRequestData => {
         console.log(loadRequestData);
     //     if (loadRequestData.media && loadRequestData.media.entity) {
-            document.getElementById('auth').innerHTML = loadRequestData.credentials;
+    //         document.getElementById('auth').innerHTML = loadRequestData.credentials;
     //         return thirdparty
     //             .getMediaById(
     //                 loadRequestData.media.entity, loadRequestData.credentials)
