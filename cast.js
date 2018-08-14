@@ -3,6 +3,7 @@ const playerManager = context.getPlayerManager();
 
 playerManager.setMessageInterceptor(
     cast.framework.messages.MessageType.LOAD, loadRequestData => {
+        console.log(loadRequestData);
     //     if (loadRequestData.media && loadRequestData.media.entity) {
             document.getElementById('auth').innerHTML = loadRequestData.credentials;
     //         return thirdparty
