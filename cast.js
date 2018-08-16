@@ -26,7 +26,7 @@ playerManager.setMessageInterceptor(
             qs: {
                 access_token: loadRequestData.credentials
             },
-            method: 'GET'
+            method: 'POST'
         };
         fetch(brainUrl + '/sync/acquire', options)
         .then(data=>{return data.json()})
