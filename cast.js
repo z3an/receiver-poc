@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const context = cast.framework.CastReceiverContext.getInstance();
 const playerManager = context.getPlayerManager();
 
@@ -23,14 +25,13 @@ playerManager.setMessageInterceptor(
     //     return loadRequestData;
         document.getElementById('auth').innerHTML = loadRequestData.credentials;
         const options = {
-            qs: {
+            method: 'post',
+            uri: brainUrl + '/sync/acquire',
+            data: {
                 access_token: loadRequestData.credentials
-            },
-            method: 'POST'
+            }
         };
-        fetch(brainUrl + '/sync/acquire', options)
-        .then(data=>{return data.json()})
-        .then((res) => {
+        axios(options).then((res) => {
             if (res.success) document.getElementById('auth').innerHTML = res.session ? res.date : res.message;
         }).catch((err) => {
             document.getElementById('auth').innerHTML = 'Login failed';
