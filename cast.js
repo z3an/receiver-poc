@@ -24,7 +24,7 @@ playerManager.setMessageInterceptor(
         document.getElementById('auth').innerHTML = loadRequestData.credentials;
         const options = {
             method: 'post',
-            uri: brainUrl + '/sync/acquire',
+            url: brainUrl + '/sync/acquire',
             data: {
                 access_token: loadRequestData.credentials
             }
