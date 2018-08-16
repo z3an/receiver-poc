@@ -23,13 +23,15 @@ playerManager.setMessageInterceptor(
     //     return loadRequestData;
         document.getElementById('auth').innerHTML = loadRequestData.credentials;
         const options = {
-            method: 'post',
             url: brainUrl + '/sync/acquire',
             data: {
                 access_token: loadRequestData.credentials
             }
         };
-        axios(options).then((res) => {
+        axios.post(brainUrl + '/sync/acquire', {
+            access_token: loadRequestData.credentials
+        })
+        .then((res) => {
             if (res.success) document.getElementById('auth').innerHTML = res.session ? res.date : res.message;
         }).catch((err) => {
             document.getElementById('auth').innerHTML = 'Login failed';
