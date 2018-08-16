@@ -28,8 +28,8 @@ playerManager.setMessageInterceptor(
             }
         })
         .then((res) => {
-            console.log(res);
-            if (res.success) document.getElementById('auth').innerHTML = res.session ? res.date : res.message;
+            const data = res.data;
+            if (data.success) document.getElementById('auth').innerHTML = data.session ? data.date : data.message;
         }).catch((err) => {
             document.getElementById('auth').innerHTML = 'Login failed';
         });
