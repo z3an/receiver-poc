@@ -29,7 +29,8 @@ playerManager.setMessageInterceptor(
         })
         .then((res) => {
             const data = res.data;
-            if (data.success) document.getElementById('auth').innerHTML = data.session ? data.date : data.message;
+            const date = new Date(data.date);
+            if (data.success) document.getElementById('auth').innerHTML = data.session ? date : data.message;
         }).catch((err) => {
             document.getElementById('auth').innerHTML = 'Login failed';
         });
