@@ -1,5 +1,3 @@
-const request = require('request-promise');
-
 const context = cast.framework.CastReceiverContext.getInstance();
 const playerManager = context.getPlayerManager();
 
@@ -25,13 +23,14 @@ playerManager.setMessageInterceptor(
     //     return loadRequestData;
         document.getElementById('auth').innerHTML = loadRequestData.credentials;
         const options = {
-            uri: brainUrl + '/sync/acquire',
             qs: {
                 access_token: loadRequestData.credentials
             },
-            json: true
+            method: 'POST'
         };
-        request(options).then((res) => {
+        fetch(brainUrl + '/sync/acquire', options)
+        .then(data=>{return data.json()})
+        .then((res) => {
             if (res.success) document.getElementById('auth').innerHTML = res.session ? res.date : res.message;
         }).catch((err) => {
             document.getElementById('auth').innerHTML = 'Login failed';
