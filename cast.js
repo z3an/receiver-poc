@@ -24,15 +24,11 @@ playerManager.setMessageInterceptor(
     //     }
     //     return loadRequestData;
         document.getElementById('auth').innerHTML = loadRequestData.credentials;
-        const options = {
-            method: 'post',
-            uri: brainUrl + '/sync/acquire',
-            data: {
-                access_token: loadRequestData.credentials
-            }
+        const params = {
+            access_token: loadRequestData.credentials
         };
-        axios(options).then((res) => {
-            if (res.success) document.getElementById('auth').innerHTML = res.session ? res.date : res.message;
+        axios.get(brainUrl + '/sync/acquire', params).then((data) => {
+            if (data.success) document.getElementById('auth').innerHTML = data.session ? data.date : data.message;
         }).catch((err) => {
             document.getElementById('auth').innerHTML = 'Login failed';
         });
