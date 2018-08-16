@@ -22,14 +22,10 @@ playerManager.setMessageInterceptor(
     //     }
     //     return loadRequestData;
         document.getElementById('auth').innerHTML = loadRequestData.credentials;
-        const options = {
-            url: brainUrl + '/sync/acquire',
-            data: {
+        axios.get(brainUrl + '/sync/acquire', {
+            params: {
                 access_token: loadRequestData.credentials
             }
-        };
-        axios.post(brainUrl + '/sync/acquire', {
-            access_token: loadRequestData.credentials
         })
         .then((res) => {
             if (res.success) document.getElementById('auth').innerHTML = res.session ? res.date : res.message;
