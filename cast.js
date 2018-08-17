@@ -1,7 +1,7 @@
 const context = cast.framework.CastReceiverContext.getInstance();
 const playerManager = context.getPlayerManager();
 
-const brainUrl = 'https://53be7f95.ngrok.io'
+const brainUrl = 'https://47bcbc1f.ngrok.io'
 
 playerManager.setMessageInterceptor(
     cast.framework.messages.MessageType.LOAD, loadRequestData => {
